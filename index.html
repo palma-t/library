@@ -14,17 +14,25 @@
     <header>
         <h1>My Library</h1>
         <dialog>
-            <button autofocus>x</button>
+            <button class="close" autofocus>x</button>
             <form action="">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Tarendol">
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" placeholder="Barjavel">
-                <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages" placeholder="42">
+                <h3>Add your book</h3>
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" placeholder="Tarendol">
+                </div>
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" placeholder="Barjavel">
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="pages" placeholder="42">
+                </div>
+                <button type="submit" class="orangeButton" id="addBook">Let's go</button>
             </form>
         </dialog>
-        <button class="addBook">New book</button>
+        <button class="orangeButton">New book</button>
     </header>
     
     <div class="container">

@@ -28,6 +28,36 @@ function addBookToLibrary(title, author, pages, readingStatus) {
     myLibrary.push(newBook);
 }
 
+// Gestion de la boîte de dialogue
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+
+// Gestion de l'envoi du formulaire
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+});
+
+const addBook = document.querySelector("#addBook");
+
+addBook.addEventListener("click", () => {
+    addBookToLibrary(title.value, author.value, pages.value, "Yes");
+    dialog.close();
+    console.log(myLibrary);
+    showLibrary(myLibrary);
+})
+
 const bookShelf = document.querySelector(".bookshelf");
 
 function showLibrary(array) {
@@ -62,14 +92,3 @@ function showLibrary(array) {
 
 showLibrary(myLibrary)
 
-const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
-
-showButton.addEventListener("click", () => {
-  dialog.showModal();
-});
-
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});
