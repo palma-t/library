@@ -1,0 +1,97 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(120, 179, 206);
+    box-shadow: 0px 2px 2px 5px rgb(201 200 200 / 50%);
+}
+
+h1{
+    padding: 30px;
+    text-align: left;
+    color: white;
+}
+
+/* à checker*/
+
+::backdrop {
+    opacity: 0.5;
+}
+
+.container {
+    padding: 50px;
+}
+
+
+.bookshelf{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    width: clamp(200px, 250px, 40vw);
+    border-radius: 15px;
+    box-shadow: 3px 2px 5px 5px rgb(201 200 200 / 50%);
+
+    padding: 20px;
+}
+
+.card h2{
+    color: rgb(249, 110, 42);
+    font-size: 1.4rem;
+}
+
+.card h3 {
+    padding-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.card div {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.del {
+    border-radius: 10px;
+    background-color: rgb(201, 230, 240);
+    color: rgb(58, 58, 58);
+    border: 1px solid white;
+}
+
+.del:hover{
+    cursor: pointer;
+    background-color: white;
+    color: rgb(58, 58, 58);
+    border: 1px solid rgb(201, 230, 240);
+}
+
+button{
+    margin: 30px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgb(249, 110, 42);
+    color: white;
+    border: 1px solid rgb(249, 110, 42);
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: rgb(249, 110, 42);
+    border: 1px solid rgb(249, 110, 42);
+}
