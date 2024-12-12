@@ -53,7 +53,6 @@ addBook.addEventListener("click", () => {
 
     addBookToLibrary(title.value, author.value, pages.value, readingStatus);
     dialog.close();
-    bookShelf.innerHTML = '';
     showLibrary(myLibrary);
 })
 
@@ -64,6 +63,7 @@ function deleteItem(index){
 }
 
 function createLibrary(array){
+    bookShelf.innerHTML = '';
     for (const book of array){
         let card = document.createElement("div");
         
@@ -79,8 +79,9 @@ function createLibrary(array){
             <span class="slider"></span>
         </label>`;
 
-        //fonctionne pas, ça fait en double
-        read.addEventListener("click", function() {
+        let toggleInput = read.querySelector("input");
+
+        toggleInput.addEventListener("click", function() {
             book.toggleReadStatus();
             console.log(book);
         })
@@ -90,8 +91,9 @@ function createLibrary(array){
         del.innerHTML = '<img src="icons/trash-can-outline.svg" alt="Delete book">';        
 
         del.addEventListener("click", function(){
-                deleteItem(book);
-            }); 
+            card.remove();
+            deleteItem(myLibrary.indexOf(book));
+        }); 
 
         card.classList.add("card");
         bottom.classList.add("bottom");
@@ -119,43 +121,11 @@ function showLibrary(array) {
     createLibrary(array);
 }
 
-
 showLibrary(myLibrary)
 
-// Gestion de la suppression d'un livre
 
-/* const removeButtons = document.querySelectorAll(".del");
-const buttonArray = [...removeButtons];
-
-function deleteItem(index){
-    myLibrary.splice(index, 1);
-    bookShelf.innerHTML = '';
-    showLibrary(myLibrary);
-}
-
-buttonArray.forEach(function(button, index){
-    button.addEventListener("click", function(){
-        deleteItem(index);
-    });
-}); 
-*/
-
-/*
-const switchButtons = document.querySelectorAll('.toggle input[type="checkbox"]');
-const switchArray = [...switchButtons];
-
-switchArray.forEach(function(checkbox, index){
-    checkbox.addEventListener("click", function(){
-        myLibrary[index].toggleReadStatus();
-        console.log(myLibrary[index]);
-       // checkbox.checked = myLibrary[index].readingStatus;
-    });
-});
-*/
 
 /*
 Bugs to fix
-- can't delete more than one card;
-- toggle doesn't respect checked or not when adding book
-Solution: putting delete and toggle inside showLibrary ?
+- toggle doesn't respect checked / false 
 */
