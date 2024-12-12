@@ -12,6 +12,7 @@ const myLibrary = [
         readingStatus: "Yes",
     },
 ]
+const bookShelf = document.querySelector(".bookshelf");
 
 function Book(title, author, pages, readingStatus) {
     this.title = title;
@@ -54,11 +55,11 @@ const addBook = document.querySelector("#addBook");
 addBook.addEventListener("click", () => {
     addBookToLibrary(title.value, author.value, pages.value, "Yes");
     dialog.close();
-    console.log(myLibrary);
+    bookShelf.innerHTML = '';
     showLibrary(myLibrary);
 })
 
-const bookShelf = document.querySelector(".bookshelf");
+// Gestion de l'affichage des livres
 
 function showLibrary(array) {
     for (const book of array){
@@ -69,8 +70,8 @@ function showLibrary(array) {
         let pag = document.createElement("div");
 
         let del = document.createElement("button");
-        del.innerText = "Rem";
         del.classList.add("del");
+        del.innerHTML = '<img src="icons/trash-can-outline.svg" alt="Delete book">';        
 
         card.classList.add("card");
         bottom.classList.add("bottom");
@@ -92,3 +93,9 @@ function showLibrary(array) {
 
 showLibrary(myLibrary)
 
+// Gestion de la suppression d'un livre
+
+const remove = document.querySelector(".del");
+remove.addEventListener("click", () => {
+    
+})

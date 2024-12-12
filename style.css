@@ -151,16 +151,23 @@ form .orangeButton {
 }
 
 .del {
-    padding: 10px 20px;
+    padding: 5px 8px;
     border-radius: 10px;
-    background-color: rgb(201, 230, 240);
+    background-color: white;
     color: rgb(58, 58, 58);
-    border: 1px solid white;
+    border: 1px solid rgb(201, 230, 240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.del img {
+    width: 20px;
 }
 
 .del:hover{
     cursor: pointer;
-    background-color: white;
+    background-color: rgb(201, 230, 240);
     color: rgb(58, 58, 58);
     border: 1px solid rgb(201, 230, 240);
 }
