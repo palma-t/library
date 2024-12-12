@@ -95,7 +95,17 @@ showLibrary(myLibrary)
 
 // Gestion de la suppression d'un livre
 
-const remove = document.querySelector(".del");
-remove.addEventListener("click", () => {
-    
-})
+const removeButtons = document.querySelectorAll(".del");
+const buttonArray = [...removeButtons];
+
+function deleteItem(index){
+    myLibrary.splice(index, 1);
+    bookShelf.innerHTML = '';
+    showLibrary(myLibrary);
+}
+
+buttonArray.forEach(function(button, index){
+    button.addEventListener("click", function(){
+        deleteItem(index);
+    });
+});
