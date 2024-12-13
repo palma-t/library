@@ -50,7 +50,7 @@ addBook.addEventListener("click", () => {
     let author = document.querySelector("#author");
     let pages = document.querySelector("#pages");
     let readingStatus = document.querySelector("#readingStatus").checked;
-
+    
     addBookToLibrary(title.value, author.value, pages.value, readingStatus);
     dialog.close();
     showLibrary(myLibrary);
@@ -58,7 +58,6 @@ addBook.addEventListener("click", () => {
 
 function deleteItem(index){
     myLibrary.splice(index, 1);
-    bookShelf.innerHTML = '';
     showLibrary(myLibrary);
 }
 
@@ -73,17 +72,25 @@ function createLibrary(array){
         let subBottom = document.createElement("div");
         let pag = document.createElement("div");
         let read = document.createElement("div");
-        read.innerHTML = 
-        `<label class="toggle">
-            <input type="checkbox" checked>
-            <span class="slider"></span>
-        </label>`;
 
-        let toggleInput = read.querySelector("input");
+        let toggleLabel = document.createElement("label");
+        let toggleInput = document.createElement("input");
+        let slider = document.createElement("span");
+
+        toggleLabel.classList.add("toggle");
+        toggleInput.type = "checkbox";
+        toggleInput.checked = book.readingStatus;
+        slider.classList.add("slider");
+
+        toggleLabel.appendChild(toggleInput);
+        toggleLabel.appendChild(slider);
+        read.appendChild(toggleLabel);
+
+        toggleInput.checked = book.readingStatus
 
         toggleInput.addEventListener("click", function() {
             book.toggleReadStatus();
-            console.log(book);
+            toggleInput.checked = book.readingStatus;
         })
 
         let del = document.createElement("button");
@@ -122,10 +129,3 @@ function showLibrary(array) {
 }
 
 showLibrary(myLibrary)
-
-
-
-/*
-Bugs to fix
-- toggle doesn't respect checked / false 
-*/
