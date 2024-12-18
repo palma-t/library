@@ -2,27 +2,32 @@ const myLibrary = []
 
 const bookShelf = document.querySelector(".bookshelf");
 
-function Book(title, author, pages, readingStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readingStatus = readingStatus;
+class Book {
+    constructor(title, author, pages, readingStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readingStatus = readingStatus;
+    }
+
+    toggleReadStatus() {
+        this.readingStatus = !this.readingStatus;
+       // console.log(this.readingStatus);
+    }
+
+    addBookToLibrary() {
+        let newBook = new Book(this.title, this.author, this.pages, this.readingStatus);
+        console.log(newBook);
+        myLibrary.push(newBook);
+    }
 }
 
-Book.prototype.toggleReadStatus = function () {
-    this.readingStatus = !this.readingStatus;
-}
+let book1 = new Book("Narnia","C.S. Lewis", 1097, true);
+let book2 = new Book("Harry Potter","J.K. Rowling", 9436, false);
+book1.addBookToLibrary();
+book2.addBookToLibrary();
 
-addBookToLibrary("Narnia","C.S. Lewis", 1097, true);
-addBookToLibrary("Harry Potter","J.K. Rowling", 9436, false);
-
-function addBookToLibrary(title, author, pages, readingStatus) {
-    let newBook = new Book(title, author, pages, readingStatus);
-    console.log(newBook);
-    myLibrary.push(newBook);
-}
-
-// Gestion de la boîte de dialogue
+// Gestion de la boite de dialogue
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
@@ -46,12 +51,13 @@ form.addEventListener('submit', function(event) {
 const addBook = document.querySelector("#addBook");
 
 addBook.addEventListener("click", () => {
-    let title = document.querySelector("#title");
-    let author = document.querySelector("#author");
-    let pages = document.querySelector("#pages");
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
     let readingStatus = document.querySelector("#readingStatus").checked;
-    
-    addBookToLibrary(title.value, author.value, pages.value, readingStatus);
+    let newBook = new Book(title, author, pages, readingStatus);
+
+    newBook.addBookToLibrary();
     dialog.close();
     showLibrary(myLibrary);
 })
@@ -61,7 +67,7 @@ function deleteItem(index){
     showLibrary(myLibrary);
 }
 
-function createLibrary(array){
+function showLibrary(array){
     bookShelf.innerHTML = '';
     for (const book of array){
         let card = document.createElement("div");
@@ -121,11 +127,6 @@ function createLibrary(array){
 
         bookShelf.appendChild(card);
     };
-}
-
-
-function showLibrary(array) {
-    createLibrary(array);
 }
 
 showLibrary(myLibrary)
